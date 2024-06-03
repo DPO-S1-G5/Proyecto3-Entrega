@@ -1,5 +1,6 @@
 package interfaz;
 import java.awt.Component;
+
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -83,7 +84,7 @@ public class VentanaInicio extends JFrame{
         	Component campo = null;
         	
         	switch (i) {
-        	case 1:
+            case 1:
                 nombreDato = new JLabel("Nombre");
                 campo =  new JTextField("");
                 campos[0] = (JTextField) campo;
@@ -140,24 +141,25 @@ public class VentanaInicio extends JFrame{
                 break;
             default:
                 nombreDato = new JLabel("");
-                JButton CrearCuenta = new JButton("Crear cuenta");
-                CrearCuenta.addActionListener(new ActionListener() 
+                JButton botonCrearCuenta = new JButton("Crear cuenta");
+                botonCrearCuenta.addActionListener(new ActionListener() 
                 {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         guardarCuenta();
                     }
                 });
-                campo = CrearCuenta;
+                campo = botonCrearCuenta;
         }
      	
         	JPanel panel2 = new JPanel(new GridLayout(2, 1));
         	panel2.add(nombreDato);
         	panel2.add(campo);
             panel.add(panel2);
+        	
       }
         
-
+      
         // Agregar el panel al JFrame
         ventana.add(panel);
 
@@ -169,29 +171,28 @@ public class VentanaInicio extends JFrame{
 
         // Hacer que la ventana sea visible
         ventana.setVisible(true);
+	}
+        
+        private void guardarCuenta() {
+	        // Recoger los valores de los campos
+	        String nombre = campos[0].getText();
+	        String nacionalidad = campos[1].getText();
+	        String correo = campos[2].getText();
+	        String cedula = campos[3].getText();
+	        String tipoTarjeta = campos[4].getText();
+	        String telefono = campos[5].getText();
+	        String numeroTarjeta = campos[6].getText();
+	        String fechaNacimiento = campos[7].getText();
+	        String usuario = campos[8].getText();
+	        String contrasena = campos[9].getText();
+	        String tipoUsuario = (String) tipoUsuarioCombo.getSelectedItem();
+
+	        empresa.guardarCuenta(nombre, nacionalidad, correo, cedula, tipoTarjeta, telefono, numeroTarjeta,
+	                                   fechaNacimiento, usuario, contrasena, tipoUsuario, galeria);
         
 	}
 	
-	
-	
-	private void guardarCuenta() {
-        // Recoger los valores de los campos
-        String nombre = campos[0].getText();
-        String nacionalidad = campos[1].getText();
-        String correo = campos[2].getText();
-        String cedula = campos[3].getText();
-        String tipoTarjeta = campos[4].getText();
-        String telefono = campos[5].getText();
-        String numeroTarjeta = campos[6].getText();
-        String fechaNacimiento = campos[7].getText();
-        String usuario = campos[8].getText();
-        String contrasena = campos[9].getText();
-        String tipoUsuario = (String) tipoUsuarioCombo.getSelectedItem();
-
-        empresa.guardarCuenta(nombre, nacionalidad, correo, cedula, tipoTarjeta, telefono, numeroTarjeta,
-                                   fechaNacimiento, usuario, contrasena, tipoUsuario, galeria);
-    
-}
+	 
 	
 	
 	

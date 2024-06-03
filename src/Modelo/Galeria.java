@@ -24,15 +24,8 @@ public class Galeria
 	public void setListaDeOferetas(List<Oferta> listaDeOferetas) {
 		this.listaDeOferetas = listaDeOferetas;
 	}
+
 	
-	public void registrarUsuario(Usuario usuario) {
-        listaDeUsuarios.add(usuario);
-    }
-	
-	
-	public List<Usuario> getListaDeUsuarios() {
-		return listaDeUsuarios;
-	}
 
 	public void setListaDeUsuarios(List<Usuario> listaDeUsuarios) {
 		this.listaDeUsuarios = listaDeUsuarios;
@@ -112,7 +105,15 @@ public class Galeria
         }
     }
     
+    public void registrarUsuario(Usuario usuario) {
+        listaDeUsuarios.add(usuario);
+    }
     
+    public List<Usuario> getListaDeUsuarios()
+    {
+    	return listaDeUsuarios;
+    }
+
 
 
     public void registrarPieza(Pieza pieza) {

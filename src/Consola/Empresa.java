@@ -1,17 +1,18 @@
 package Consola;
 
-import java.io.BufferedWriter;
+import java.util.List;
 
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Date;
-import java.util.List;
 
-import Modelo.Administrador;
 import Modelo.Comprador;
 import Modelo.Galeria;
 import Modelo.Propietario;
 import Modelo.Usuario;
+
+import Modelo.Administrador;
 
 public class Empresa 
 {
@@ -34,8 +35,6 @@ public class Empresa
 		
     }
     
-    
-    
     public void guardarCuenta(String nombre, String nacionalidad, String correo, String cedula, String tipoTarjeta,
             String telefono, String numeroTarjeta, String fechaNacimiento, String usuario, String contrasena,
             String tipoUsuario, Galeria galeria) 
@@ -50,7 +49,7 @@ public class Empresa
             guardarDatosEnArchivo(nuevoPropietario, "propietario.txt");
         }
 
-        
+        // Mostrar un mensaje de confirmación (opcional)
         System.out.println("Cuenta creada exitosamente: " + usuario);
     }
     
@@ -88,6 +87,4 @@ public class Empresa
             e.printStackTrace();
         }
     }
-
-
 }
