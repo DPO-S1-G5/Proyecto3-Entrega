@@ -24,7 +24,12 @@ public class Galeria
 	public void setListaDeOferetas(List<Oferta> listaDeOferetas) {
 		this.listaDeOferetas = listaDeOferetas;
 	}
-
+	
+	public void registrarUsuario(Usuario usuario) {
+        listaDeUsuarios.add(usuario);
+    }
+	
+	
 	public List<Usuario> getListaDeUsuarios() {
 		return listaDeUsuarios;
 	}
@@ -107,10 +112,7 @@ public class Galeria
         }
     }
     
-    public void registrarUsuario(Usuario usuario) {
-        listaDeUsuarios.add(usuario);
-    }
-
+    
 
 
     public void registrarPieza(Pieza pieza) {

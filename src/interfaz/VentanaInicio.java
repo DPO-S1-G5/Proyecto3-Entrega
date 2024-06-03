@@ -9,6 +9,7 @@ import java.net.URL;
 import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,7 +17,17 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import Consola.Empresa;
+import Modelo.Galeria;
+
 public class VentanaInicio extends JFrame{
+	
+	private Galeria galeria;
+	private Empresa empresa;
+	private JTextField[] campos;
+	private JComboBox<String> tipoUsuarioCombo;
+	
+	
 	public VentanaInicio() {
 
         JFrame ventana = new JFrame("Registro Galería");
@@ -72,48 +83,72 @@ public class VentanaInicio extends JFrame{
         	Component campo = null;
         	
         	switch (i) {
-            case 1:
+        	case 1:
                 nombreDato = new JLabel("Nombre");
                 campo =  new JTextField("");
+                campos[0] = (JTextField) campo;
                 break;
             case 2:
             	nombreDato = new JLabel("Nacionalidad");
             	campo =  new JTextField("");
+            	campos[1] = (JTextField) campo;
                 break;
             case 3:
             	nombreDato = new JLabel("Correo");
             	campo =  new JTextField("");
+            	campos[2] = (JTextField) campo;
                 break;
             case 4:
             	nombreDato = new JLabel("Cédula");
             	campo =  new JTextField("");
+            	campos[3] = (JTextField) campo;
                 break;
             case 5:
             	nombreDato = new JLabel("Tipo de tarjeta de crédito");
             	campo =  new JTextField("");
+            	campos[4] = (JTextField) campo;
                 break;
             case 6:
             	nombreDato = new JLabel("Teléfono");   
             	campo =  new JTextField("");
+            	campos[5] = (JTextField) campo;
+            	break;
             case 7:
             	nombreDato = new JLabel("Número de tarjeta de credito");
             	campo =  new JTextField("");
+            	campos[6] = (JTextField) campo;
                 break;
             case 8:
             	nombreDato = new JLabel("Fecha de nacimiento (dd/MM/yyyy)");
             	campo =  new JTextField("");
+            	campos[7] = (JTextField) campo;
             	break;
             case 9:
             	nombreDato = new JLabel("Usuario");
             	campo =  new JTextField("");
+            	campos[8] = (JTextField) campo;
                 break;
             case 10:
             	nombreDato = new JLabel("Contraseña");
             	campo =  new JTextField("");
+            	campos[9] = (JTextField) campo;
+                break;
+            case 11:
+            	nombreDato = new JLabel("Tipo de usuario");
+            	tipoUsuarioCombo = new JComboBox<>(new String[]{"Comprador", "Propietario"});
+                campo = tipoUsuarioCombo;
                 break;
             default:
                 nombreDato = new JLabel("");
-                campo =  new JButton("Crear cuenta");
+                JButton CrearCuenta = new JButton("Crear cuenta");
+                CrearCuenta.addActionListener(new ActionListener() 
+                {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        guardarCuenta();
+                    }
+                });
+                campo = CrearCuenta;
         }
      	
         	JPanel panel2 = new JPanel(new GridLayout(2, 1));
@@ -136,6 +171,30 @@ public class VentanaInicio extends JFrame{
         ventana.setVisible(true);
         
 	}
+	
+	
+	
+	private void guardarCuenta() {
+        // Recoger los valores de los campos
+        String nombre = campos[0].getText();
+        String nacionalidad = campos[1].getText();
+        String correo = campos[2].getText();
+        String cedula = campos[3].getText();
+        String tipoTarjeta = campos[4].getText();
+        String telefono = campos[5].getText();
+        String numeroTarjeta = campos[6].getText();
+        String fechaNacimiento = campos[7].getText();
+        String usuario = campos[8].getText();
+        String contrasena = campos[9].getText();
+        String tipoUsuario = (String) tipoUsuarioCombo.getSelectedItem();
+
+        empresa.guardarCuenta(nombre, nacionalidad, correo, cedula, tipoTarjeta, telefono, numeroTarjeta,
+                                   fechaNacimiento, usuario, contrasena, tipoUsuario, galeria);
+    
+}
+	
+	
+	
 	
 	 public static void main(String[] args) {
 	        new VentanaInicio();
